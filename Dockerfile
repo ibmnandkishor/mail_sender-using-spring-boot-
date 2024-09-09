@@ -6,9 +6,10 @@ RUN mvn clean package -DskipTests
 
 
 
-FROM openjdk:24-23-rc-slim-bullseye
+FROM openjdk:21-slim-bullseye
 WORKDIR /app
 COPY --from=build /app/target/mail_sender-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
+
 
